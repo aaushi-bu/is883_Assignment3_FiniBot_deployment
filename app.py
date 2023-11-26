@@ -144,9 +144,12 @@ chain = MultiPromptChain(
 
 
 # UX goes here. You will have to encorporate some variables from the code above and make some tweaks.
+# Add a "Submit" button
+    if st.button("Submit"):
+        # Run FiniBot only when the button is clicked
+        chain = create_fini_bot_chain(input_data, level)
+        result = chain.run(input_data)
 
-
-
-result= chain.run(input)
-
-st.markdown(result)
+        # Display FiniBot's analysis and recommendation
+        st.markdown("### FiniBot's Analysis and Recommendation:")
+        st.markdown(result)
