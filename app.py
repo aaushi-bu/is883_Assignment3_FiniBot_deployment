@@ -69,7 +69,7 @@ routes = [
 ]
 
 from langchain.llms import OpenAI
-llm = OpenAI(temperature = 0.4)
+llm = OpenAI(temperature = 0.2)
 
 
 destination_chains = {}
