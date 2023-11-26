@@ -16,6 +16,15 @@ import langchain
 open_AI_key = os.environ.get('OPENAI_API_KEY')
 openai.api_key = open_AI_key
 
+st.header("Welcome to FiniBot!")
+level = st.radio("Select your level:", ["Novice", "Expert"])
+
+
+spectra = st.file_uploader("upload file", type={"csv", "txt"})
+if spectra is not None:
+    input = pd.read_csv(spectra)
+st.write(input)
+
 ### Here, with some adjustments, copy-paste the code you developed for Question 1 in Assignment 3 
 ##########################################################################
 
@@ -136,14 +145,7 @@ chain = MultiPromptChain(
 
 # UX goes here. You will have to encorporate some variables from the code above and make some tweaks.
 
-st.header("Welcome to FiniBot!")
-level = st.radio("Select your level:", ["Novice", "Expert"])
 
-
-spectra = st.file_uploader("upload file", type={"csv", "txt"})
-if spectra is not None:
-    input = pd.read_csv(spectra)
-st.write(input)
 
 result= chain.run(input)
 
